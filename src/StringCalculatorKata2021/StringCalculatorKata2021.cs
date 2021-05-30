@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace StringCalculatorKata2021
 {
@@ -10,6 +11,15 @@ namespace StringCalculatorKata2021
             {
                 return 0;
             }
+
+            if (numbers.Contains(','))
+            {
+                var result = numbers.Split(',')
+                    .Select(x => int.Parse(x))
+                    .Sum();
+                return result;
+            }
+
             return int.Parse(numbers);
         }
     }

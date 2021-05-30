@@ -19,7 +19,20 @@ namespace StringCalculatorKata2021.Tests
         [Theory]
         [InlineData("1", 1)]
         [InlineData("2", 2)]
-        public void Returns1GivenStringWith1(string numbers, int expectedResult)
+        public void ReturnsNumberGivenStringWithOneNumber(string numbers, int expectedResult)
+        {
+            var calculator = new StringCalculator();
+
+            var result = calculator.Add(numbers);
+
+            Assert.Equal(expectedResult, result);
+
+        }
+
+        [Theory]
+        [InlineData("1, 2", 3)]
+        [InlineData("2, 3", 5)]
+        public void ReturnsSumGivenStringWithTwoSeparatedCommaNumbers(string numbers, int expectedResult)
         {
             var calculator = new StringCalculator();
 
