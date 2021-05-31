@@ -83,5 +83,17 @@ namespace StringCalculatorKata2021.Tests
             Assert.Equal(expectedMessage, ex.Message);
 
         }
+
+        [Theory]
+        [InlineData("1, 2, 3000", 3)]
+        [InlineData("1001, 2", 2)]
+        [InlineData("1000, 2", 1002)]
+        public void ReturnsSumGivenStringIgnoringValuesOver1000(string numbers, int expectedResult)
+        {
+            var result = _stringCalculator.Add(numbers);
+
+            Assert.Equal(expectedResult, result);
+
+        }
     }
 }

@@ -41,6 +41,7 @@ namespace StringCalculatorKata2021
             }
 
             var result = numberList
+                .Where(n => n <= 1000)
                 .Sum();
 
             return result;
