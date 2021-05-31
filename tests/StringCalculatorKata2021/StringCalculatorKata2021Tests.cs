@@ -50,7 +50,19 @@ namespace StringCalculatorKata2021.Tests
 
         [Theory]
         [InlineData("1\n2, 3", 6)]
+        [InlineData("1\n2\n3", 6)]
+        [InlineData("1,2\n3", 6)]
         public void ReturnsSumGivenStringWithThreeSeparatedCommaOrNewLineNumbers(string numbers, int expectedResult)
+        {
+            var result = _stringCalculator.Add(numbers);
+
+            Assert.Equal(expectedResult, result);
+
+        }
+
+        [Theory]
+        [InlineData("//;\n1;2;3", 6)]
+        public void ReturnsSumGivenStringWithCustomDelimiter(string numbers, int expectedResult)
         {
             var result = _stringCalculator.Add(numbers);
 
