@@ -12,15 +12,13 @@ namespace StringCalculatorKata2021
                 return 0;
             }
 
-            if (numbers.Contains(','))
-            {
-                var result = numbers.Split(',')
-                    .Select(x => int.Parse(x))
-                    .Sum();
-                return result;
-            }
+            var delimiters = new[] {',', '\n'};
 
-            return int.Parse(numbers);
+            var result = numbers.Split(delimiters)
+                .Select(x => int.Parse(x))
+                .Sum();
+            return result;
+
         }
     }
 }
