@@ -1,3 +1,4 @@
+using System;
 using StringCalculatorKata2021;
 using Xunit;
 
@@ -67,6 +68,19 @@ namespace StringCalculatorKata2021.Tests
             var result = _stringCalculator.Add(numbers);
 
             Assert.Equal(expectedResult, result);
+
+        }
+
+        [Theory]
+        [InlineData("-1,2", "Negatives not allowed: -1")]
+        [InlineData("-1,-2", "Negatives not allowed: -1,-2")]
+        public void ThrowsNegativeNumbersInput(string numbers, string expectedMessage)
+        {
+            Action action = () => _stringCalculator.Add(numbers);
+
+            var ex = Assert.Throws<Exception>(action);
+
+            Assert.Equal(expectedMessage, ex.Message);
 
         }
     }

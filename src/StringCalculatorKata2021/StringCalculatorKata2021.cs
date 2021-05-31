@@ -28,8 +28,19 @@ namespace StringCalculatorKata2021
                 delimiters.Add(Convert.ToChar(newDelimeter));
             }
 
-            var result = stringinput.Split(delimiters.ToArray())
-                .Select(x => int.Parse(x))
+            var numberList = stringinput.Split(delimiters.ToArray())
+                .Select(x => int.Parse(x));
+
+            var negatives = numberList.Where(x => x < 0);
+
+            if (negatives.Any())
+            {
+                string negativeString = String.Join(',', negatives.Select(x => x.ToString()));
+
+                throw new Exception($"Negatives not allowed: {negativeString}");
+            }
+
+            var result = numberList
                 .Sum();
 
             return result;
